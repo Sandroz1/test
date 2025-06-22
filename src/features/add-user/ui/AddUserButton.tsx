@@ -15,7 +15,9 @@ export const AddUserButton: React.FC = () => {
           sx={{
             whiteSpace: 'nowrap',
             minWidth: 'fit-content',
-            paddingX: 2,
+            paddingX: { xs: 1.5, sm: 2 },
+            paddingY: { xs: 0.8, sm: 1 },
+            fontSize: { xs: '0.8rem', sm: '0.875rem' },
             background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
             color: 'white',
             boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',

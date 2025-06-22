@@ -129,7 +129,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
                 <Box
                     textAlign="center"
                     sx={{
-                        p: 4,
+                        p: { xs: 2, md: 4 },
                     }}
                 >
                     <motion.div
@@ -143,7 +143,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
                             sx={{
                                 color: '#E0E0E0',
                                 mb: 2,
-                                fontSize: { xs: '2.5rem', md: '4rem' },
+                                fontSize: { xs: '2rem', sm: '2.5rem', md: '4rem' },
                                 textShadow: '0 0 15px rgba(255, 255, 255, 0.3)',
                             }}
                         >
@@ -160,7 +160,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
                             sx={{
                                 color: '#B0B0B0',
                                 mb: 4,
-                                fontSize: { xs: '1rem', md: '1.5rem' },
+                                fontSize: { xs: '0.95rem', sm: '1rem', md: '1.5rem' },
                             }}
                         >
                             Управляйте пользователями с легкостью и удовольствием!
@@ -179,8 +179,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
                             onClick={onClose}
                             sx={{
                                 mt: 2,
-                                px: 8,
-                                py: 2,
+                                px: { xs: 3, sm: 6, md: 8 },
+                                py: { xs: 1, md: 2 },
                                 borderRadius: 50,
                                 color: 'white',
                                 background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
@@ -188,6 +188,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onClose }) => {
                                 '&:hover': {
                                     boxShadow: '0 5px 8px 3px rgba(33, 203, 243, .4)',
                                 },
+                                fontSize: { xs: '1rem', md: '1.25rem' },
                             }}
                         >
                             Начать работу

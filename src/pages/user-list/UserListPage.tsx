@@ -57,13 +57,15 @@ const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
 
     return (
         <>
-            <Paper sx={{ p: 2, borderRadius: 2 }}>
+            <Paper sx={{ p: 2, borderRadius: 2, maxWidth: '100vw', overflowX: 'auto' }}>
                 <Toolbar
                     sx={{
-                        pl: { sm: 2 },
+                        pl: { xs: 1, sm: 2 },
                         pr: { xs: 1, sm: 1 },
                         mb: 2,
                         borderRadius: 1,
+                        flexWrap: 'wrap',
+                        gap: 2,
                         ...(numSelected > 0 && {
                             bgcolor: (theme) =>
                                 alpha(theme.palette.primary.main, 0.15),
@@ -72,12 +74,12 @@ const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
                     }}
                 >
                     {numSelected > 0 ? (
-                        <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
+                        <Typography sx={{ flex: '1 1 auto', display: 'flex', alignItems: 'center' }}>
                             {numSelected} выбрано
                         </Typography>
                     ) : (
-                        <Box sx={{ flex: '1 1 100%', display: 'flex', alignItems: 'center' }}>
-                            <Typography variant="h6" id="tableTitle" component="div">
+                        <Box sx={{ flex: '1 1 auto', display: 'flex', alignItems: 'center' }}>
+                            <Typography variant="h6" id="tableTitle" component="div" sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
                                 Список пользователей
                             </Typography>
                             <Tooltip title="Показать экран приветствия">
@@ -88,7 +90,7 @@ const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
                         </Box>
                     )}
                     {numSelected > 0 ? (
-                        <Button variant="contained" color="error" onClick={() => setOpenDialog(true)}>
+                        <Button variant="contained" color="error" onClick={() => setOpenDialog(true)} sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                             Удалить
                         </Button>
                     ) : (

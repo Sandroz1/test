@@ -14,7 +14,7 @@ export const UserItem: React.FC<UserItemProps> = memo(({ user, onToggleSelect, i
       hover
       selected={isSelected}
     >
-      <TableCell padding="checkbox" sx={{ width: '60px' }}>
+      <TableCell padding="checkbox" sx={{ width: '60px', display: { xs: 'none', sm: 'table-cell' } }}>
         <Checkbox
           color="primary"
           checked={isSelected}
@@ -24,19 +24,19 @@ export const UserItem: React.FC<UserItemProps> = memo(({ user, onToggleSelect, i
       <TableCell sx={{ width: '80px' }}>
         <Avatar src={user.photo} alt={user.name} sx={{ width: 40, height: 40 }} />
       </TableCell>
-      <TableCell sx={{ width: '20%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <TableCell sx={{ width: { xs: '40%', md: '20%' }, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: { xs: 'normal', md: 'nowrap' } }}>
         {user.name}
       </TableCell>
-      <TableCell sx={{ width: '15%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <TableCell sx={{ width: { xs: '30%', md: '15%' }, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: { xs: 'normal', md: 'nowrap' }, display: { xs: 'none', sm: 'table-cell' } }}>
         {user.username}
       </TableCell>
-      <TableCell sx={{ width: '25%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <TableCell sx={{ width: { xs: '30%', md: '25%' }, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: { xs: 'normal', md: 'nowrap' } }}>
         {user.email}
       </TableCell>
-      <TableCell sx={{ width: '15%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <TableCell sx={{ width: { xs: '30%', md: '15%' }, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: { xs: 'normal', md: 'nowrap' }, display: { xs: 'none', sm: 'table-cell' } }}>
         {user.phone}
       </TableCell>
-      <TableCell sx={{ width: '10%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+      <TableCell sx={{ width: { xs: '20%', md: '10%' }, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: { xs: 'normal', md: 'nowrap' }, display: { xs: 'none', md: 'table-cell' } }}>
         {user.zipcode}
       </TableCell>
     </TableRow>

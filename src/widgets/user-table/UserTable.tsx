@@ -68,7 +68,7 @@ export const UserTable: React.FC<UserTableProps> = ({
   }
 
   return (
-    <TableContainer sx={{ height: 600, '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-thumb': { backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '4px' } }}>
+    <TableContainer sx={{ height: 600, width: '100%', overflowX: 'auto', '&::-webkit-scrollbar': { width: '8px' }, '&::-webkit-scrollbar-thumb': { backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '4px' } }}>
       <Table stickyHeader sx={{ tableLayout: 'fixed' }}>
         <TableHead>
           <TableRow sx={{
@@ -78,7 +78,7 @@ export const UserTable: React.FC<UserTableProps> = ({
                 backdropFilter: 'blur(5px)',
             }
           }}>
-            <TableCell padding="checkbox" sx={{ width: '60px' }}>
+            <TableCell padding="checkbox" sx={{ width: '60px', display: { xs: 'none', sm: 'table-cell' } }}>
               <Checkbox
                 color="primary"
                 indeterminate={numSelected > 0 && numSelected < rowCount}
@@ -90,7 +90,7 @@ export const UserTable: React.FC<UserTableProps> = ({
               />
             </TableCell>
             <TableCell sx={{ width: '80px' }}>Фото</TableCell>
-            <TableCell sx={{ width: '20%' }} sortDirection={sort.field === 'name' ? sort.order : false}>
+            <TableCell sx={{ width: { xs: '40%', md: '20%' } }} sortDirection={sort.field === 'name' ? sort.order : false}>
               <TableSortLabel
                 active={sort.field === 'name'}
                 direction={sort.field === 'name' ? sort.order : 'asc'}
@@ -99,10 +99,14 @@ export const UserTable: React.FC<UserTableProps> = ({
                 Имя
               </TableSortLabel>
             </TableCell>
-            <TableCell sx={{ width: '15%' }}>Имя пользователя</TableCell>
-            <TableCell sx={{ width: '25%' }}>Email</TableCell>
-            <TableCell sx={{ width: '15%' }}>Телефон</TableCell>
-            <TableCell sx={{ width: '10%' }} sortDirection={sort.field === 'zipcode' ? sort.order : false}>
+            <TableCell sx={{ width: { xs: '30%', md: '15%' }, display: { xs: 'none', sm: 'table-cell' } }}>
+              Имя пользователя
+            </TableCell>
+            <TableCell sx={{ width: { xs: '30%', md: '25%' } }}>Email</TableCell>
+            <TableCell sx={{ width: { xs: '30%', md: '15%' }, display: { xs: 'none', sm: 'table-cell' } }}>
+              Телефон
+            </TableCell>
+            <TableCell sx={{ width: { xs: '20%', md: '10%' }, display: { xs: 'none', md: 'table-cell' } }} sortDirection={sort.field === 'zipcode' ? sort.order : false}>
               <TableSortLabel
                 active={sort.field === 'zipcode'}
                 direction={sort.field === 'zipcode' ? sort.order : 'asc'}
