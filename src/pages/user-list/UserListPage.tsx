@@ -4,12 +4,11 @@ import ConfirmationDialog from '../../shared/ui/ConfirmationDialog';
 import { AddUserButton } from '../../features/add-user/ui/AddUserButton';
 import { UserFilters } from '../../features/filter-users/ui/UserFilters';
 import { UserTable } from '../../widgets/user-table/UserTable';
-import { Box, Paper, Typography, Toolbar, Button, alpha, Tooltip, IconButton } from '@mui/material';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useSnackbar } from 'notistack';
 
 interface UserListPageProps {
-  onShowWelcome: () => void;
+    onShowWelcome: () => void;
 }
 
 const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
@@ -57,46 +56,36 @@ const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
 
     return (
         <>
-            <Paper sx={{ p: 2, borderRadius: 2, maxWidth: '100vw', overflowX: 'auto' }}>
-                <Toolbar
-                    sx={{
-                        pl: { xs: 1, sm: 2 },
-                        pr: { xs: 1, sm: 1 },
-                        mb: 2,
-                        borderRadius: 1,
-                        flexWrap: 'wrap',
-                        gap: 2,
-                        ...(numSelected > 0 && {
-                            bgcolor: (theme) =>
-                                alpha(theme.palette.primary.main, 0.15),
-                            color: 'primary.main'
-                        }),
-                    }}
+            <div className="p-4 rounded-lg max-w-full overflow-x-auto bg-white border border-gray-200 shadow-sm">
+                <div
+                    className={`flex flex-wrap gap-2 mb-3 rounded px-2 py-2 items-center min-h-[48px] ${numSelected > 0 ? 'bg-gray-100 text-gray-800' : ''}`}
                 >
                     {numSelected > 0 ? (
-                        <Typography sx={{ flex: '1 1 auto', display: 'flex', alignItems: 'center' }}>
-                            {numSelected} выбрано
-                        </Typography>
+                        <span className="flex-1 flex items-center font-medium text-base">{numSelected} выбрано</span>
                     ) : (
-                        <Box sx={{ flex: '1 1 auto', display: 'flex', alignItems: 'center' }}>
-                            <Typography variant="h6" id="tableTitle" component="div" sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
-                                Список пользователей
-                            </Typography>
-                            <Tooltip title="Показать экран приветствия">
-                                <IconButton onClick={onShowWelcome} size="small" sx={{ ml: 1 }}>
-                                    <InfoOutlinedIcon fontSize="small" />
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
+                        <div className="flex-1 flex items-center">
+                            <span className="text-base font-semibold" id="tableTitle">Список пользователей</span>
+                            <button
+                                type="button"
+                                onClick={onShowWelcome}
+                                className="ml-2 p-1 rounded hover:bg-gray-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                                title="Показать экран приветствия"
+                            >
+                                <InfoOutlinedIcon fontSize="small" />
+                            </button>
+                        </div>
                     )}
                     {numSelected > 0 ? (
-                        <Button variant="contained" color="error" onClick={() => setOpenDialog(true)} sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
+                        <button
+                            className="bg-red-100 hover:bg-red-200 text-red-800 font-medium rounded-lg px-4 py-2 text-sm border border-red-200 shadow hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-300"
+                            onClick={() => setOpenDialog(true)}
+                        >
                             Удалить
-                        </Button>
+                        </button>
                     ) : (
                         <AddUserButton />
                     )}
-                </Toolbar>
+                </div>
                 <UserFilters filter={filter} setFilter={setFilter} />
                 <UserTable
                     users={users}
@@ -108,7 +97,7 @@ const UserListPage: React.FC<UserListPageProps> = ({ onShowWelcome }) => {
                     toggleSelect={toggleSelect}
                     handleSelectAllClick={handleSelectAllClick}
                 />
-            </Paper>
+            </div>
             <ConfirmationDialog open={openDialog} onClose={() => setOpenDialog(false)} onConfirm={handleDelete} />
         </>
     );

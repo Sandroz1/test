@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Button } from '@mui/material';
 import { UserForm } from '../../../widgets/user-form/UserForm';
 import { motion } from 'framer-motion';
 
@@ -9,22 +8,13 @@ export const AddUserButton: React.FC = () => {
   return (
     <>
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-        <Button
-          variant="contained"
+        <button
+          type="button"
           onClick={() => setOpen(true)}
-          sx={{
-            whiteSpace: 'nowrap',
-            minWidth: 'fit-content',
-            paddingX: { xs: 1.5, sm: 2 },
-            paddingY: { xs: 0.8, sm: 1 },
-            fontSize: { xs: '0.8rem', sm: '0.875rem' },
-            background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-            color: 'white',
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-          }}
+          className="whitespace-nowrap min-w-fit px-4 py-2 text-sm font-medium rounded-lg border border-blue-200 bg-blue-100 text-blue-900 shadow hover:bg-blue-200 hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
         >
           Добавить пользователя
-        </Button>
+        </button>
       </motion.div>
       <UserForm open={open} onClose={() => setOpen(false)} />
     </>
